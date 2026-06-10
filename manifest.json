@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Abrir no Haruna",
+  "version": "1.0",
+  "description": "Adiciona uma opção no menu de contexto para abrir vídeos no player Haruna.",
+  "permissions": [
+    "contextMenus",
+    "nativeMessaging"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "haruna-opener@lu15-f3-dev.org",
+      "strict_min_version": "109.0"
+    }
+  }
+}
