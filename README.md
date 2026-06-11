@@ -43,6 +43,20 @@ Abra o arquivo e substitua `/home/SEU_USUARIO/` pelo caminho real da sua pasta H
 
 ---
 
+## 🚀 Instalação Automatizada (Recomendado)
+
+Abra o terminal do seu Fedora/Linux e rode o comando abaixo para instalar todos os arquivos locais necessários de forma automática:
+
+```bash
+curl -sSL https://raw.githubusercontent.com/Lu15-F3/haruna-firefox-opener/main/install.sh | bash
+```
+
+Esse comando vai criar os diretórios necessários, baixar o script de comunicação nativa e configurar os caminhos corretos para o seu usuário.
+
+Depois disso, basta instalar a extensão na loja do Firefox e ativar a permissão para janelas privativas (modo anônimo), caso deseje!
+
+---
+
 ## 📂 Arquivos deste Repositório / Repository Files
 
 Para fins de backup e transparência com a comunidade, este repositório contém:
