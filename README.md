@@ -64,3 +64,11 @@ Para fins de backup e transparência com a comunidade, este repositório contém
 * **haruna_wrapper.py** -> O script Python que roda no seu Linux.
 * **org.custom.haruna.json** -> O manifesto que você coloca na pasta oculta do Mozilla.
 * **manifest.json** e **background.js** -> O código-fonte da extensão do navegador.
+
+### 📦 Notas sobre Flatpak / Snap
+Esta extensão foi projetada para as versões nativas (RPM/DEB) do Firefox e do Haruna. Se você utiliza as versões em Flatpak ou Snap, os caminhos das pastas mudam devido ao isolamento do sistema:
+
+* **Firefox em Flatpak:** O arquivo `org.custom.haruna.json` deve ser movido para:
+  `~/.var/app/org.mozilla.firefox/.mozilla/native-messaging-hosts/`
+  
+* **Haruna em Flatpak:** Pode ser necessário editar o script `haruna_wrapper.py` para chamar o player usando o comando `flatpak run org.kde.haruna` em vez de apenas `haruna`.
