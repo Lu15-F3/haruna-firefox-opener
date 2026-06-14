@@ -6,6 +6,11 @@ This project consists of a Firefox extension and a Linux native messaging host t
 
 > 🇧🇷 **Nota:** Esta extensão envia links do navegador diretamente para o player Haruna no Fedora.
 
+<p align="center">
+  <img src="screenshots/imagem1.png" width="45%" alt="Screenshot 1" />
+  <img src="screenshots/imagem2.png" width="45%" alt="Screenshot 2" />
+</p>
+
 ---
 
 ## 🚀 Instalação / Installation (Linux/Fedora)
