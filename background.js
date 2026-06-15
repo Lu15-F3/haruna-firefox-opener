@@ -1,28 +1,52 @@
-// Cria o item no menu de contexto quando a extensão é instalada
+// Criar o menu de contexto ao instalar a extensão
 browser.runtime.onInstalled.addListener(() => {
   browser.contextMenus.create({
-    id: "open-in-haruna",
+    id: "abrir-no-haruna",
     title: "Abrir no Haruna",
-    contexts: ["link", "video", "page"]
+    contexts: ["link", "page", "video"]
   });
 });
 
-// Escuta os cliques no menu de contexto
+// Função para exibir a notificação nativa
+function enviarNotificacao(titulo, mensagem) {
+  browser.notifications.create({
+    type: "basic",
+    iconUrl: browser.runtime.getURL("icone-48.png"),
+    title: titulo,
+    message: mensagem || ""
+  });
+}
+
+// Escutar o clique no menu de contexto
 browser.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "open-in-haruna") {
-    // Tenta pegar a URL do link, se não, pega a URL da página atual
-    let url = info.linkUrl || info.srcUrl || info.pageUrl;
-    
-    if (url) {
-      console.log("Enviando URL para o script nativo:", url);
-      // Envia uma mensagem para o script nativo em Python
-      browser.runtime.sendNativeMessage(
-        "org.custom.haruna", 
-        { url: url }
-      ).then(
-        response => console.log("Resposta do script nativo:", response),
-        error => console.error("Erro ao comunicar com o script nativo:", error)
-      );
+  if (info.menuItemId === "abrir-no-haruna") {
+    let videoUrl = info.linkUrl || info.pageUrl;
+
+    if (videoUrl) {
+      // 🛠️ FILTRO INTELIGENTE: Se for um Mix do YouTube (list=RD...), removemos a playlist para não quebrar o Haruna
+      if (videoUrl.includes("youtube.com") && videoUrl.includes("list=RD")) {
+        try {
+          const urlObj = new URL(videoUrl);
+          urlObj.searchParams.delete("list"); // Remove o parâmetro da playlist problemática
+          urlObj.searchParams.delete("index"); // Remove o índice da playlist se houver
+          videoUrl = urlObj.toString();
+        } catch (e) {
+          console.error("Erro ao tratar URL do YouTube:", e);
+        }
+      }
+
+      // Dispara a notificação de início imediatamente
+      enviarNotificacao("Haruna Player", "Enviando vídeo para o player...");
+
+      // Envia a URL filtrada para o script Python local
+      browser.runtime.sendNativeMessage("org.custom.haruna", { url: videoUrl })
+        .then((response) => {
+          console.log("Resposta do script nativo:", response);
+        })
+        .catch((error) => {
+          console.error("Erro ao comunicar com o script nativo:", error);
+          enviarNotificacao("Erro no Haruna", "Não foi possível abrir o player. Verifique o script local.");
+        });
     }
   }
 });
