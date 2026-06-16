@@ -1,13 +1,22 @@
-// Criar o menu de contexto ao instalar a extensão
+// Inicializar os menus de contexto
 browser.runtime.onInstalled.addListener(() => {
+  // Menu padrão para vídeos/páginas
   browser.contextMenus.create({
-    id: "abrir-no-haruna",
-    title: "Abrir no Haruna",
+    id: "abrir-video-haruna",
+    title: "Abrir Vídeo no Haruna",
     contexts: ["link", "page", "video"]
+  });
+
+  // Menu extra exclusivo para playlists reais do YouTube (PL...)
+  browser.contextMenus.create({
+    id: "abrir-playlist-haruna",
+    title: "Abrir Playlist Completa no Haruna",
+    contexts: ["link", "page"],
+    targetUrlPatterns: ["*://*.youtube.com/*list=PL*", "*://youtube.com/*list=PL*"]
   });
 });
 
-// Função para exibir a notificação nativa
+// Função universal para notificações
 function enviarNotificacao(titulo, mensagem) {
   browser.notifications.create({
     type: "basic",
@@ -17,36 +26,60 @@ function enviarNotificacao(titulo, mensagem) {
   });
 }
 
-// Escutar o clique no menu de contexto
-browser.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "abrir-no-haruna") {
-    let videoUrl = info.linkUrl || info.pageUrl;
+// Trata o clique nos menus
+browser.contextMenus.onClicked.addListener(async (info, tab) => {
+  let videoUrl = info.linkUrl || info.pageUrl;
+  if (!videoUrl) return;
 
-    if (videoUrl) {
-      // 🛠️ FILTRO INTELIGENTE: Se for um Mix do YouTube (list=RD...), removemos a playlist para não quebrar o Haruna
-      if (videoUrl.includes("youtube.com") && videoUrl.includes("list=RD")) {
-        try {
-          const urlObj = new URL(videoUrl);
-          urlObj.searchParams.delete("list"); // Remove o parâmetro da playlist problemática
-          urlObj.searchParams.delete("index"); // Remove o índice da playlist se houver
-          videoUrl = urlObj.toString();
-        } catch (e) {
-          console.error("Erro ao tratar URL do YouTube:", e);
-        }
+  // Carrega as preferências salvas pelo usuário na página de opções
+  const configuracoes = await browser.storage.local.get({
+    harunaFullscreen: false,
+    harunaCloseTab: false
+  });
+
+  // SE O USUÁRIO CLICOU EM "ABRIR VÍDEO" (Filtra os Mixes automáticos list=RD)
+  if (info.menuItemId === "abrir-video-haruna") {
+    if (videoUrl.includes("youtube.com") && videoUrl.includes("list=RD")) {
+      try {
+        const urlObj = new URL(videoUrl);
+        urlObj.searchParams.delete("list");
+        urlObj.searchParams.delete("index");
+        videoUrl = urlObj.toString();
+      } catch (e) {
+        console.error("Erro ao limpar URL do Mix:", e);
       }
-
-      // Dispara a notificação de início imediatamente
-      enviarNotificacao("Haruna Player", "Enviando vídeo para o player...");
-
-      // Envia a URL filtrada para o script Python local
-      browser.runtime.sendNativeMessage("org.custom.haruna", { url: videoUrl })
-        .then((response) => {
-          console.log("Resposta do script nativo:", response);
-        })
-        .catch((error) => {
-          console.error("Erro ao comunicar com o script nativo:", error);
-          enviarNotificacao("Erro no Haruna", "Não foi possível abrir o player. Verifique o script local.");
-        });
+    }
+    // Se clicou em "Abrir Vídeo" mas era uma playlist real, limpa a playlist para tocar só o vídeo atual
+    else if (videoUrl.includes("youtube.com") && videoUrl.includes("list=PL")) {
+      try {
+        const urlObj = new URL(videoUrl);
+        urlObj.searchParams.delete("list");
+        urlObj.searchParams.delete("index");
+        videoUrl = urlObj.toString();
+      } catch (e) {
+        console.error("Erro ao limpar playlist do vídeo:", e);
+      }
     }
   }
+
+  // Envia os dados para o Python local
+  enviarNotificacao("Haruna Player", "Enviando para o player...");
+
+  // Prepara o objeto de mensagem. Se a opção de tela cheia estiver ativa, mandamos uma flag extra
+  const dadosMensagem = { url: videoUrl };
+  if (configuracoes.harunaFullscreen) {
+    dadosMensagem.fullscreen = true; // O wrapper Python precisará ler isso se você quiser tratar no player
+  }
+
+  browser.runtime.sendNativeMessage("org.custom.haruna", dadosMensagem)
+    .then(() => {
+      // Se o usuário ativou a opção de fechar a aba, fecha ela agora que deu certo
+      if (configuracoes.harunaCloseTab && tab && tab.id) {
+        browser.tabs.remove(tab.id);
+      }
+    })
+    .catch((error) => {
+      console.error("Erro no Native Messaging:", error);
+      enviarNotificacao("Erro no Haruna", "Não foi possível abrir o player. Verifique o script local.");
+    });
 });

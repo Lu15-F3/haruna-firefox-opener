@@ -1,30 +1,36 @@
 #!/usr/bin/env bash
 
-# Cores para o terminal parecer profissional
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
-NC='\033[0m' # Sem cor
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
-echo -e "${BLUE}🎬 Iniciando a instalação do Haruna Firefox Opener...${NC}"
+echo -e "${BLUE}🎬 Iniciando a instalação inteligente do Haruna Firefox Opener...${NC}"
 
-# 1. Criar os diretórios necessários caso não existam
-echo "📁 Criando pastas de configuração..."
-mkdir -p "$HOME/.mozilla/native-messaging-hosts"
+# 1. Criar pasta para o script Python
 mkdir -p "$HOME/.local/bin"
 
-# 2. Baixar o script Python do seu GitHub
-echo "📥 Baixando o script Python..."
+# 2. Detectar onde o arquivo JSON deve ser instalado (Flatpak vs Nativo)
+# Verifica se a pasta do Flatpak do Firefox existe
+if [ -d "$HOME/.var/app/org.mozilla.firefox" ]; then
+    TARGET_DIR="$HOME/.var/app/org.mozilla.firefox/.mozilla/native-messaging-hosts"
+    echo -e "${YELLOW}📦 Firefox em Flatpak detectado!${NC}"
+else
+    TARGET_DIR="$HOME/.mozilla/native-messaging-hosts"
+    echo -e "🦊 Firefox Nativo (RPM/DEB) detectado."
+fi
+
+mkdir -p "$TARGET_DIR"
+
+# 3. Baixar os arquivos do GitHub do criador
+echo "📥 Baixando arquivos necessários..."
 curl -sSL "https://raw.githubusercontent.com/Lu15-F3/haruna-firefox-opener/main/haruna_wrapper.py" -o "$HOME/.local/bin/haruna_wrapper.py"
 chmod +x "$HOME/.local/bin/haruna_wrapper.py"
 
-# 3. Baixar o arquivo JSON do manifesto nativo
-echo "📥 Baixando o manifesto de comunicação nativa..."
-curl -sSL "https://raw.githubusercontent.com/Lu15-F3/haruna-firefox-opener/main/org.custom.haruna.json" -o "$HOME/.mozilla/native-messaging-hosts/org.custom.haruna.json"
+curl -sSL "https://raw.githubusercontent.com/Lu15-F3/haruna-firefox-opener/main/org.custom.haruna.json" -o "$TARGET_DIR/org.custom.haruna.json"
 
-# 4. Ajustar dinamicamente o caminho da Home do usuário dentro do JSON
+# 4. Ajustar caminhos dinamicamente no JSON instalado
 echo "⚙️ Configurando caminhos do sistema..."
-# Substitui o caminho genérico ou do criador pelo caminho real do usuário atual
-sed -i "s|\"path\": \".*\"|\"path\": \"$HOME/.local/bin/haruna_wrapper.py\"|" "$HOME/.mozilla/native-messaging-hosts/org.custom.haruna.json"
+sed -i "s|\"path\": \".*\"|\"path\": \"$HOME/.local/bin/haruna_wrapper.py\"|" "$TARGET_DIR/org.custom.haruna.json"
 
-echo -e "${GREEN}✅ Instalação local concluída com sucesso!${NC}"
-echo -e "🦊 Agora, certifique-se de instalar a extensão no seu Firefox."
+echo -e "${GREEN}✅ Configuração do sistema concluída com sucesso!${NC}"
