@@ -18,23 +18,24 @@
   </style>
 </head>
 <body>
-  <h2>Preferências do Haruna</h2>
+  <!-- Adicionamos IDs para o JavaScript injetar os textos traduzidos -->
+  <h2 id="optionsTitle"></h2>
   
   <div class="option-group">
     <label>
       <input type="checkbox" id="fullscreen">
-      Sempre abrir em Tela Cheia
+      <span id="optFullscreen"></span>
     </label>
   </div>
 
   <div class="option-group">
     <label>
       <input type="checkbox" id="closeTab">
-      Fechar a aba após enviar o vídeo
+      <span id="optCloseTab"></span>
     </label>
   </div>
 
-  <div id="status" class="status">Configurações salvas!</div>
+  <div id="status" class="status"></div>
 
   <script src="options.js"></script>
 </body>
