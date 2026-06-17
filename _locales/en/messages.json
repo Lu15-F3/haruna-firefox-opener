@@ -1,0 +1,38 @@
+{
+  "extName": {
+    "message": "Open in Haruna"
+  },
+  "extDescription": {
+    "message": "Adds context menu options to open videos and playlists in the Haruna media player."
+  },
+  "menuOpenVideo": {
+    "message": "Open Video in Haruna"
+  },
+  "menuOpenPlaylist": {
+    "message": "Open Full Playlist in Haruna"
+  },
+  "notifTitle": {
+    "message": "Haruna Player"
+  },
+  "notifSending": {
+    "message": "Sending to player..."
+  },
+  "notifErrorTitle": {
+    "message": "Haruna Error"
+  },
+  "notifErrorDesc": {
+    "message": "Could not open the player. Check your local script."
+  },
+  "optionsTitle": {
+    "message": "Haruna Preferences"
+  },
+  "optFullscreen": {
+    "message": "Always open in Fullscreen"
+  },
+  "optCloseTab": {
+    "message": "Close tab after sending video"
+  },
+  "statusSaved": {
+    "message": "Settings saved!"
+  }
+}

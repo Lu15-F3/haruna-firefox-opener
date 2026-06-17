@@ -1,0 +1,14 @@
+{
+  "extName": { "message": "In Haruna öffnen" },
+  "extDescription": { "message": "Fügt Kontextmenü-Optionen hinzu, um Videos und Wiedergabelisten im Haruna-Player zu öffnen." },
+  "menuOpenVideo": { "message": "Video in Haruna öffnen" },
+  "menuOpenPlaylist": { "message": "Vollständige Wiedergabeliste in Haruna öffnen" },
+  "notifTitle": { "message": "Haruna Player" },
+  "notifSending": { "message": "Wird an den Player gesendet..." },
+  "notifErrorTitle": { "message": "Haruna-Fehler" },
+  "notifErrorDesc": { "message": "Der Player konnte nicht geöffnet werden. Überprüfen Sie Ihr lokales Skript." },
+  "optionsTitle": { "message": "Haruna-Einstellungen" },
+  "optFullscreen": { "message": "Immer im Vollbildmodus öffnen" },
+  "optCloseTab": { "message": "Tab nach dem Senden des Videos schließen" },
+  "statusSaved": { "message": "Einstellungen gespeichert!" }
+}
