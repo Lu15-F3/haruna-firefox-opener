@@ -7,6 +7,25 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [1.4.0] - 2026-06-17
+
+### Adicionado
+- **Internacionalização Completa (i18n):** Estruturação do projeto para suportar múltiplos idiomas usando a API nativa `browser.i18n` do Firefox.
+- **Suporte a 7 Idiomas:** Adicionadas traduções completas para:
+  - Inglês (`en`) — Definido como o idioma padrão de segurança (*default_locale*).
+  - Português Brasileiro (`pt_BR`).
+  - Espanhol (`es`).
+  - Alemão (`de`).
+  - Francês (`fr`).
+  - Chinês Simplificado (`zh_CN`).
+  - Japonês (`ja`).
+- **Página de Opções Dinâmica:** Atualização dos arquivos `options.html` e `options.js` para injetar os textos traduzidos em tempo de execução com base no idioma do navegador do usuário.
+
+### Alterado
+- Refatoração do `background.js` para exibir menus de contexto e notificações dinâmicas utilizando as chaves localizadas do arquivo `messages.json`.
+
+---
+
 ## [1.3.0] - 2026-06-16
 
 ### Adicionado
@@ -42,6 +61,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+[1.4.0]: https://github.com/Lu15-F3/haruna-firefox-opener/compare/v1.3.1...v1.4.0
 [1.3.0]: https://github.com/Lu15-F3/haruna-firefox-opener/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Lu15-F3/haruna-firefox-opener/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/Lu15-F3/haruna-firefox-opener/releases/tag/v1.1.0
