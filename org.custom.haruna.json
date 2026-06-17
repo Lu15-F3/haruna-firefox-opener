@@ -1,9 +1,0 @@
-{
-  "name": "org.custom.haruna",
-  "description": "Native messaging host para abrir links no Haruna",
-  "path": "/home/USER/.local/bin/haruna_wrapper.py",
-  "type": "stdio",
-  "allowed_extensions": [
-    "haruna-opener@lu15-f3-dev.org"
-  ]
-}
