@@ -1,0 +1,14 @@
+{
+  "extName": { "message": "在 Haruna 中打开" },
+  "extDescription": { "message": "在右键菜单中添加选项，以便在 Haruna 播放器中打开视频和 unity 播放列表。" },
+  "menuOpenVideo": { "message": "在 Haruna 中打开视频" },
+  "menuOpenPlaylist": { "message": "在 Haruna 中打开完整播放列表" },
+  "notifTitle": { "message": "Haruna 播放器" },
+  "notifSending": { "message": "正在发送至播放器..." },
+  "notifErrorTitle": { "message": "Haruna 错误" },
+  "notifErrorDesc": { "message": "无法打开播放器。请检查您的本地脚本。" },
+  "optionsTitle": { "message": "Haruna 首选项" },
+  "optFullscreen": { "message": "始终全屏打开" },
+  "optCloseTab": { "message": "发送视频后自动关闭标签页" },
+  "statusSaved": { "message": "设置已保存！" }
+}

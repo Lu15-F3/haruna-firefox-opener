@@ -1,0 +1,14 @@
+{
+  "extName": { "message": "Haruna で開く" },
+  "extDescription": { "message": "コンテキストメニューに、動画やプレイリストを Haruna プレイヤーで開くオプションを追加します。" },
+  "menuOpenVideo": { "message": "動画を Haruna で開く" },
+  "menuOpenPlaylist": { "message": "プレイリスト全体を Haruna で開く" },
+  "notifTitle": { "message": "Haruna Player" },
+  "notifSending": { "message": "プレイヤーに送信中..." },
+  "notifErrorTitle": { "message": "Haruna エラー" },
+  "notifErrorDesc": { "message": "プレイヤーを開けませんでした。ローカルスクリプトを確認してください。" },
+  "optionsTitle": { "message": "Haruna の設定" },
+  "optFullscreen": { "message": "常にフルスクリーンで開く" },
+  "optCloseTab": { "message": "動画送信後にタブを閉じる" },
+  "statusSaved": { "message": "設定を保存しました！" }
+}

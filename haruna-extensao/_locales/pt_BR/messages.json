@@ -1,0 +1,38 @@
+{
+  "extName": {
+    "message": "Abrir no Haruna"
+  },
+  "extDescription": {
+    "message": "Adiciona opções no menu de contexto para abrir vídeos e playlists no player Haruna."
+  },
+  "menuOpenVideo": {
+    "message": "Abrir Vídeo no Haruna"
+  },
+  "menuOpenPlaylist": {
+    "message": "Abrir Playlist Completa no Haruna"
+  },
+  "notifTitle": {
+    "message": "Haruna Player"
+  },
+  "notifSending": {
+    "message": "Enviando para o player..."
+  },
+  "notifErrorTitle": {
+    "message": "Erro no Haruna"
+  },
+  "notifErrorDesc": {
+    "message": "Não foi possível abrir o player. Verifique o script local."
+  },
+  "optionsTitle": {
+    "message": "Preferências do Haruna"
+  },
+  "optFullscreen": {
+    "message": "Sempre abrir em Tela Cheia"
+  },
+  "optCloseTab": {
+    "message": "Fechar a aba após enviar o vídeo"
+  },
+  "statusSaved": {
+    "message": "Configurações salvas!"
+  }
+}

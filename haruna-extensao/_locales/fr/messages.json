@@ -1,0 +1,14 @@
+{
+  "extName": { "message": "Ouvrir dans Haruna" },
+  "extDescription": { "message": "Ajoute des options au menu contextuel pour ouvrir des vidéos et des listes de lecture dans le lecteur Haruna." },
+  "menuOpenVideo": { "message": "Ouvrir la vidéo dans Haruna" },
+  "menuOpenPlaylist": { "message": "Ouvrir la liste de lecture complète dans Haruna" },
+  "notifTitle": { "message": "Lecteur Haruna" },
+  "notifSending": { "message": "Envoi au lecteur..." },
+  "notifErrorTitle": { "message": "Erreur Haruna" },
+  "notifErrorDesc": { "message": "Impossible d'ouvrir le lecteur. Vérifiez votre script local." },
+  "optionsTitle": { "message": "Préférences d'Haruna" },
+  "optFullscreen": { "message": "Toujours ouvrir en plein écran" },
+  "optCloseTab": { "message": "Fermer l'onglet après l'envoi de la vidéo" },
+  "statusSaved": { "message": "Paramètres enregistrés !" }
+}
