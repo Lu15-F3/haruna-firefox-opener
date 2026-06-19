@@ -7,6 +7,24 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+## [1.5.0] - 2026-06-19
+
+### Adicionado
+
+- **Controle de Resolução Máxima: Integração de um seletor de qualidade de vídeo (480p, 720p, 1080p, 4K ou Máxima) na interface de preferências, injetando o parâmetro correspondente via linha de comando no player.
+
+- **Comportamento Dinâmico de Abas: Implementação de uma seção de controle na página de opções para gerenciar a aba do navegador após o envio do vídeo, incluindo a nova funcionalidade de pausar automaticamente o vídeo original no YouTube para evitar a duplicidade de áudio.
+
+### Alterado
+
+- Migração do Payload de Comunicação: Refatoração da API nativeMessaging no background.js para enviar um objeto JSON estruturado contendo metadados de configuração, em substituição ao envio de strings de URL puras.
+
+- Modernização do Script Nativo (haruna_wrapper.py): Atualização completa do script Python para interpretar payloads complexos e executar o Haruna de forma assíncrona utilizando o argumento otimizado --ytdlfs.
+
+- Interface de Preferências Polida: Ajuste e limpeza visual do arquivo options.html e options.js para remover campos obsoletos, melhorar o layout em temas escuros e exibir uma confirmação visual imediata ao salvar configurações.
+
+---
+
 ## [1.4.0] - 2026-06-17
 
 ### Adicionado
@@ -61,6 +79,7 @@ e este projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR
 
 ---
 
+[1.5.0]: https://github.com/Lu15-F3/haruna-firefox-opener/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/Lu15-F3/haruna-firefox-opener/compare/v1.3.1...v1.4.0
 [1.3.0]: https://github.com/Lu15-F3/haruna-firefox-opener/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/Lu15-F3/haruna-firefox-opener/compare/v1.1.0...v1.2.0
