@@ -72,6 +72,28 @@ Para fins de backup e transparência com a comunidade, este repositório contém
 * **org.custom.haruna.json** -> O manifesto que você coloca na pasta oculta do Mozilla.
 * **manifest.json** e **background.js** -> O código-fonte da extensão do navegador.
 
+---
+
+## 🗑️ Desinstalação (Uninstall)
+
+Caso queira remover completamente o **Haruna Firefox Opener** do seu sistema, o processo é tão simples quanto a instalação. O script de desinstalação removerá o script Python e o manifesto JSON de forma totalmente segura, limpando as pastas apenas se elas estiverem vazias para não afetar outras extensões instaladas no seu navegador.
+
+Para desinstalar, basta copiar e colar o comando abaixo no seu terminal:
+
+```bash
+curl -sSL "https://raw.githubusercontent.com/Lu15-F3/haruna-firefox-opener/main/uninstall.sh" | bash
+```
+
+O script cuidará de:
+
+* **Remover o script wrapper de execução local em ~/.local/bin/.
+
+* **Remover o manifesto JSON org.custom.haruna.json dos diretórios do Firefox (Nativo e Flatpak).
+
+* **Fazer uma limpeza segura das pastas criadas, caso não existam arquivos de outras extensões nelas.
+
+---
+
 ### 📦 Notas sobre Flatpak / Snap
 Esta extensão foi projetada para as versões nativas (RPM/DEB) do Firefox e do Haruna. Se você utiliza as versões em Flatpak ou Snap, os caminhos das pastas mudam devido ao isolamento do sistema:
 
