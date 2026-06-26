@@ -1,6 +1,6 @@
 # Haruna Firefox Opener 🎬🦊
 
-[![Mozilla Add-on](https://img.shields.io/amo/v/abrir-no-haruna?style=flat-square&color=ff4500&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/pt-BR/firefox/addon/abrir-no-haruna/)
+[![Versão](https://img.shields.io/amo/v/abrir-no-haruna?style=flat-square&color=ff4500&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/pt-BR/firefox/addon/abrir-no-haruna/) [![Usuários](https://img.shields.io/amo/users/abrir-no-haruna?style=flat-square&color=ff4500&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/pt-BR/firefox/addon/abrir-no-haruna/) [![Avaliações](https://img.shields.io/amo/rating/abrir-no-haruna?style=flat-square&color=ff4500&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/pt-BR/firefox/addon/abrir-no-haruna/) [![Estrelas](https://img.shields.io/amo/stars/abrir-no-haruna?style=flat-square&color=ff4500&logo=firefox-browser&logoColor=white)](https://addons.mozilla.org/pt-BR/firefox/addon/abrir-no-haruna/)
 
 This project consists of a Firefox extension and a Linux native messaging host that allows you to right-click any video link (YouTube, Vimeo, etc.) and open it directly in the **Haruna Media Player** (RPM version).
 
