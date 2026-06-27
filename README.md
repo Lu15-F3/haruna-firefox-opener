@@ -95,9 +95,13 @@ O script cuidará de:
 ---
 
 ### 📦 Notas sobre Flatpak / Snap
-Esta extensão foi projetada para as versões nativas (RPM/DEB) do Firefox e do Haruna. Se você utiliza as versões em Flatpak ou Snap, os caminhos das pastas mudam devido ao isolamento do sistema:
 
-* **Firefox em Flatpak:** O arquivo `org.custom.haruna.json` deve ser movido para:
+Esta extensão foi projetada para as versões nativas (RPM/DEB) do Firefox e do Haruna. Se você utiliza as versões em Flatpak ou Snap, os caminhos das pastas e permissões mudam devido ao isolamento (sandbox) do sistema:
+
+* **Firefox em Flatpak:** O arquivo de manifesto `org.custom.haruna.json` deve ser movido para:
   `~/.var/app/org.mozilla.firefox/.mozilla/native-messaging-hosts/`
   
-* **Haruna em Flatpak:** Pode ser necessário editar o script `haruna_wrapper.py` para chamar o player usando o comando `flatpak run org.kde.haruna` em vez de apenas `haruna`.
+  *Nota:* Devido ao sandbox do Flatpak, você também precisa permitir que o Firefox se comunique com o sistema executando este comando no terminal:
+  `flatpak override --user --talk-name=org.freedesktop.Flatpak org.mozilla.firefox`
+
+* **Haruna em Flatpak:** O script `haruna_wrapper.py` deve ser editado para chamar o player usando o comando `flatpak run org.kde.haruna` em vez de apenas `haruna`.
